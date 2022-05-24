@@ -20,7 +20,7 @@ const Dte =({navigation}) =>{
                         <View>
               <TouchableOpacity
               style={{height:68,width:157,justifyContent:"center",alignItems:"center",borderRadius:15,backgroundColor:"#5364b2",marginTop:225}}
-              onPress={()=> navigation.navigate('Camera')}
+              onPress={()=> navigation.navigate('Edging')}
               >
                        <Text style={{color:"white",fontWeight:"bold",fontSize:22}}>proceed</Text>
               </ TouchableOpacity> 

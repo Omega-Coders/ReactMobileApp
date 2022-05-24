@@ -23,7 +23,7 @@ const Edgs =({navigation}) =>{
                         <View>
               <TouchableOpacity
               style={{height:57,width:190,justifyContent:"center",alignItems:"center",borderRadius:15,backgroundColor:"#5364b2",marginTop:75}}
-              onPress={()=> navigation.navigate('Preview')}
+              onPress={()=> navigation.navigate('Camera')}
               >
                        <Text style={{color:"white",fontWeight:"bold",fontSize:20}}> Start Scanning</Text>
               </ TouchableOpacity> 

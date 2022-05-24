@@ -56,6 +56,7 @@ const styles = StyleSheet.create ({
    wordBold: {
       fontFamily:'Merriweather',
       fontSize:26,
+      fontStyle:'MerriweatherOswald',
       marginTop:0,
       marginLeft:-160,
       fontWeight: 'bold',
