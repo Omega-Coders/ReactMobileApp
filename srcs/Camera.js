@@ -6,7 +6,7 @@ import RNFS from 'react-native-fs';
 import CustomButton from './CustomButton';
 import styles from './Styles'
 
-let  newFilePath ='mani'
+
 export default function Camera({navigation}){
     const [{cameraRef},{takePicture}]=useCamera(null);
     const captureHandel = async()=>{
@@ -15,7 +15,7 @@ export default function Camera({navigation}){
         console.log(data.uri);
        
         const filepath =data.uri;
-        navigation.navigate('ImageDisplay', { path:filepath });
+        navigation.navigate('Preview', { path:filepath });
        /* newFilePath = RNFS.ExternalDirectoryPath+'/mytest.jpg';
         RNFS.moveFile(filepath,newFilePath)
            .then(()=>{

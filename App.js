@@ -6,8 +6,11 @@ import Camera from './srcs/Camera';
 import CustomButton from './srcs/CustomButton';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-
+import TextExample from './srcs/screens/login';
+import Tempchoosen from './srcs/screens/choosetemp';
+import Dte from './srcs/screens/dtemp';
+import Nearer from './srcs/screens/preview';
+import Edgs from './srcs/screens/xl';
 import {LogBox} from "react-native";
 import ImageDisplay from './srcs/ImageDisplay';
 LogBox.ignoreLogs([
@@ -28,6 +31,13 @@ export default MyStack = () => {
   return (
     <NavigationContainer >
       <Stack.Navigator screenOptions={{ headerShown: false }} >
+        <Stack.Screen name="login" component={TextExample} />
+        <Stack.Screen name="ChooseTemplates" component={Tempchoosen} />
+        <Stack.Screen name="DefaultTemplates" component={Dte} />
+        <Stack.Screen name="Preview" component={Nearer} />
+        <Stack.Screen name="Edging" component={Edgs} />
+
+
         <Stack.Screen name="Home" component={Home} options={{ title: 'Welcome' }}/>
         <Stack.Screen name="Camera" component={Camera} />
         <Stack.Screen name="ImageDisplay" component={ImageDisplay} />
