@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, Image,StyleSheet,Button,TouchableOpacity,Pressable} from 'react-native';
 import CustomButton from './custombutton';
+import Text_Size from './Textscaling';
 
 
 const Tempchoosen = ({navigation})=> {
@@ -62,7 +63,7 @@ marginLeft:-455
 },
  welcome:{
     fontFamily:'Inter',
-    fontSize:32,
+    fontSize:Text_Size.Text_size_Type_3,
     fontStyle:'MerriweatherOswald',
     marginTop:-30,
     marginLeft:-150,
@@ -90,8 +91,7 @@ prefernce:{
  },
    choose: {
       fontFamily:'Merriweather',
-      fontSize:20,
-      fontStyle:'MerriweatherOswald',
+      fontSize:Text_Size.Text_size_Type_1,
       marginTop:20,
       marginLeft:-190,
       fontWeight: 'bold',

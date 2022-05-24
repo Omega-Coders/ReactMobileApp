@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { View, Text, Image,StyleSheet,TouchableOpacity} from 'react-native'
+import { View, Text, Image,StyleSheet,TouchableOpacity} from 'react-native';
+import Text_Size from './Textscaling';
+import {widthPercentageToDP as wp,heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const TextExample = ({navigation}) => {
    return (
-      <View style={{width:"100%",height:"100%",justifyContent:"center",alignSelf:"center",alignContent:"center",alignItems:"center"}}>
+      <View style={{width:"100%",height:"100%",justifyContent:"center",alignItems:"center"}}>
     <View style = {styles.container}>
           <Image style={styles.profile}
                    source={require('../imgs/2243429.jpg')}/>
@@ -41,12 +43,13 @@ export default TextExample
 
 const styles = StyleSheet.create ({
   container: {
+     flex:-1,
     alignItems: 'center',
     marginTop: 100,
     padding: 20
  },
  profile:{
-  width:430,
+   width:435,
   height:325,
   marginTop:-190,
   marginLeft:-5,
@@ -55,8 +58,7 @@ const styles = StyleSheet.create ({
  },
    wordBold: {
       fontFamily:'Merriweather',
-      fontSize:26,
-      fontStyle:'MerriweatherOswald',
+      fontSize:Text_Size.Text_size_Type_2,
       marginTop:0,
       marginLeft:-160,
       fontWeight: 'bold',
@@ -64,8 +66,7 @@ const styles = StyleSheet.create ({
    },
    cbold: {
       fontFamily:'Merriweather',
-      fontSize:26,
-      fontStyle:'Inter',
+      fontSize:Text_Size.Text_size_Type_2,
       marginTop:-5,
       marginLeft:-65,
       fontWeight: 'bold',

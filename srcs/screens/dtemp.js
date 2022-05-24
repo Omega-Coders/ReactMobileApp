@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View,StyleSheet,TouchableOpacity,Image} from 'react-native';
-
+import Text_Size from './Textscaling';
 
 
 const Dte =({navigation}) =>{
@@ -55,9 +55,9 @@ const styles = StyleSheet.create ({
 },
 dt:{
     fontFamily:'Inter',
-    fontSize:21,
+    fontSize:Text_Size.Text_size_Type_1,
     marginTop:-10,
-    marginLeft:-111,
+    marginLeft:-61,
     fontWeight: 'bold',
     color: '#5364B2', 
  },

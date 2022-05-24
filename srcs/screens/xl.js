@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View,StyleSheet,TouchableOpacity,Image,TextInput } from 'react-native'
-
+import Text_Size from './Textscaling';
 
 const Edgs =({navigation}) =>{
     return(
@@ -19,7 +19,7 @@ const Edgs =({navigation}) =>{
             <Text style={styles.xsheet}>
                     Provide Your XL-Sheet Link:
                         </Text>
-                        <TextInput style={styles.tlin}  placeholder={"Mention your XL-Sheet link here"} />
+                        <TextInput style={styles.tlin}  placeholder={"Place Your XL-Sheet link here"} />
                         <View>
               <TouchableOpacity
               style={{height:57,width:190,justifyContent:"center",alignItems:"center",borderRadius:15,backgroundColor:"#5364b2",marginTop:75}}
@@ -56,7 +56,7 @@ csp:{
 },
 etg:{
     fontFamily:'Inter',
-    fontSize:25,
+    fontSize:Text_Size.Text_size_Type_2,
     marginTop:-80,
     marginLeft:-81,
     fontWeight: 'bold',
@@ -65,7 +65,7 @@ etg:{
  },
  gup:{
     fontFamily:'Inter',
-    fontSize:17.5,
+    fontSize:Text_Size.Text_size_Type_0,
     marginLeft:10,
     marginTop:3,
     fontWeight:'Semibold',
@@ -77,9 +77,10 @@ etg:{
      marginTop:10
  },
  xsheet:{
-     fontSize:20,
-     marginTop:-30,
-     marginLeft:-89
+     fontSize:Text_Size.Text_size_Type_1,
+     marginTop:-20,
+     marginLeft:-19,
+     color:'black'
  },
  tlin:{
      height:50,

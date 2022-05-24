@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View,StyleSheet,TouchableOpacity,Image } from 'react-native'
 import { useRoute } from '@react-navigation/native';
-
+import Text_Size from './Textscaling';
 const Nearer =({navigation}) =>{
    const route = useRoute();
     return(
@@ -56,17 +56,17 @@ const styles = StyleSheet.create ({
 },
 textg:{
     fontFamily:'Inter',
-    fontSize:23,
+    fontSize:Text_Size.Text_size_Type_2,
     marginTop:-80,
-    marginLeft:-130,
+    marginLeft:-100,
     fontWeight: 'bold',
     color: '#5F5FE3',
     textDecorationLine: 'underline'
  },
  preview:{
     fontFamily:'Inter',
-    fontSize:15.5,
-    marginLeft:10,
+    fontSize:Text_Size.Text_size_Type_0,
+    marginLeft:70,
     fontWeight:'Semibold',
     color:"#353935"
  },
