@@ -19,7 +19,6 @@ LogBox.ignoreLogs([
 export default function ImageDisplay({navigationz}){
 
   const route = useRoute();
-    
     return(
         
     <View >
