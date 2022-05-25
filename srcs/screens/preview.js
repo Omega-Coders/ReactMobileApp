@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Text, View,StyleSheet,TouchableOpacity,Image } from 'react-native'
 import { useRoute } from '@react-navigation/native';
 import Text_Size from './Textscaling';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 const Nearer =({navigation}) =>{
    const route = useRoute();
     return(
@@ -16,12 +17,12 @@ const Nearer =({navigation}) =>{
                         </Text>
                             <View >
      
-                             <Image source={{uri:('file://'+route.params.path)}} style={{width: 400, height:520,marginTop:40}}/>
+                             <Image source={{uri:('file://'+route.params.path)}} style={{width: wp('90%'), height:hp('70%'),marginTop:'8%'}}/>
 
                             </View>
                         <View>    
                            <TouchableOpacity
-                           style={{height:57,width:170,justifyContent:"center",alignItems:"center",borderRadius:40,backgroundColor:"#5364b2",marginTop:20}}
+                           style={{height:57,width:170,justifyContent:"center",alignItems:"center",borderRadius:40,backgroundColor:"#5364b2",marginTop:'4%'}}
                            onPress={()=> navigation.navigate('DefauEdgingltTemplates')}>
 
                                     <Text style={{color:"white",fontWeight:"bold",fontSize:20}}> Done</Text>
@@ -36,7 +37,7 @@ const styles = StyleSheet.create ({
     container: {
       alignItems: 'center',
       marginTop: 100,
-      padding: 20
+      padding: '0.5%'
    },
    circleshape:{
       width:150,

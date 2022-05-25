@@ -10,7 +10,6 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@react-native-community/cameraroll": "^4.1.2",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.2",
     "ignore-warnings": "^0.2.1",
@@ -19,6 +18,7 @@
     "react-native-camera": "^4.2.1",
     "react-native-camera-hooks": "^0.5.3",
     "react-native-fs": "^2.20.0",
+    "react-native-responsive-screen": "^1.4.2",
     "react-native-safe-area-context": "^4.2.5",
     "react-native-screens": "^3.13.1",
     "tflite-react-native": "^0.0.5"
