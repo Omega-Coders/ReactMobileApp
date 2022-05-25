@@ -17,7 +17,7 @@ const Nearer =({navigation}) =>{
                         </Text>
                             <View >
      
-                             <Image source={{uri:('file://'+route.params.path)}} style={{width: wp('90%'), height:hp('70%'),marginTop:'8%'}}/>
+                             <Image source={{uri:('file://'+route.params.path)}} style={{width: wp('90%'), height:hp('70%'),marginTop:'3%'}}/>
 
                             </View>
                         <View>    
