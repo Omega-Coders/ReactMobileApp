@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, Image,StyleSheet,TouchableOpacity} from 'react-native';
 import Text_Size from './Textscaling';
-import {widthPercentageToDP as wp,heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+//
 
 const TextExample = ({navigation}) => {
    return (
