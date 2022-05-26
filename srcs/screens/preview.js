@@ -28,7 +28,7 @@ const Nearer =({navigation}) =>{
                   <View style={styles.part_c}>    
                         <TouchableOpacity
                         style={{height:57,width:170,justifyContent:"center",alignItems:"center",borderRadius:40,backgroundColor:"#5364b2",marginTop:'4%'}}
-                        onPress={()=> navigation.navigate('DefauEdgingltTemplates')}>
+                        onPress={()=> navigation.navigate('login')}>
 
                         <Text style={{color:"white",fontWeight:"bold",fontSize:20}}> Done</Text>
                         </ TouchableOpacity> 
