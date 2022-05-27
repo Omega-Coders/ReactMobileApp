@@ -29,9 +29,9 @@ const Nearer = ({ navigation }) => {
             <Image source={{ uri: ('file://' + route.params.path) }} style={{ width: wp('90%'), height: hp('66%'), marginTop: '-15%' }} />
             <View style={styles.p3_1}>
             <TouchableOpacity
-               style={{ height: 57, width: 170, justifyContent: "center", alignItems: "center", borderRadius: 40, backgroundColor: "#5364b2", marginTop: '5%' }}
+               style={{ height: hp("7%"), width: wp("25%"), justifyContent: "center", alignItems: "center", borderRadius: 40, backgroundColor: "#5364b2", marginTop: hp('3%') }}
                onPress={() => navigation.navigate('login')}>
-               <Text style={{ color: "white", fontWeight: "bold", fontSize: 20 }}> Done</Text>
+               <Text style={{ color: "white", fontWeight: "bold", fontSize: Text_Size.Text_size_Type_1 }}> Done</Text>
             </ TouchableOpacity>
             </View>
             </View>
