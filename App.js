@@ -37,7 +37,6 @@ export default MyStack = () => {
         <Stack.Screen name="Preview" component={Nearer} />
         <Stack.Screen name="Edging" component={Edgs} />
 
-
         <Stack.Screen name="Home" component={Home} options={{ title: 'Welcome' }}/>
         <Stack.Screen name="Camera" component={Camera} />
         <Stack.Screen name="ImageDisplay" component={ImageDisplay} />

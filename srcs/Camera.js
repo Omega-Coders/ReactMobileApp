@@ -15,7 +15,7 @@ export default function Camera({navigation}){
         console.log(data.uri);
        
         const filepath =data.uri;
-        navigation.navigate('Preview', { path:filepath });
+      navigation.navigate('Preview', { path:filepath });
        /* newFilePath = RNFS.ExternalDirectoryPath+'/mytest.jpg';
         RNFS.moveFile(filepath,newFilePath)
            .then(()=>{

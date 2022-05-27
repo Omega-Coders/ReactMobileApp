@@ -10,22 +10,17 @@ const Dte =({navigation}) =>{
          <View style={styles.csp}></View>
               <Image style={styles.boy}
                    source={require('../imgs/undraw_Date_picker_re_r0p8_prev_ui.png')}/>
-        
-          
-
-        <Text style={styles.dt}>
-      Predefined Templates for you!..
-        </Text>
-       
+                            <Text style={styles.dt}>
+                        Predefined Templates for you!..
+                            </Text>
                         <View>
               <TouchableOpacity
-              style={{height:68,width:157,justifyContent:"center",alignItems:"center",borderRadius:15,backgroundColor:"#5364b2",marginTop:"60%"}}
+              style={{height:68,width:157,justifyContent:"center",alignItems:"center",borderRadius:15,backgroundColor:"#5364b2",marginTop:"30%"}}
               onPress={()=> navigation.navigate('Edging')}
               >
                        <Text style={{color:"white",fontWeight:"bold",fontSize:22}}>proceed</Text>
               </ TouchableOpacity> 
               </View>
-
         </ View>
     )
 }

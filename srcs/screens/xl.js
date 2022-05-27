@@ -22,7 +22,7 @@ const Edgs =({navigation}) =>{
                         <TextInput style={styles.tlin}  placeholder={"Place Your XL-Sheet link here"} />
                         <View>
               <TouchableOpacity
-              style={{height:57,width:190,justifyContent:"center",alignItems:"center",borderRadius:15,backgroundColor:"#5364b2",marginTop:75}}
+              style={{height:57,width:190,justifyContent:"center",alignItems:"center",borderRadius:15,backgroundColor:"#5364b2",marginTop:"1%"}}
               onPress={()=> navigation.navigate('Camera')}
               >
                        <Text style={{color:"white",fontWeight:"bold",fontSize:20}}> Start Scanning</Text>
