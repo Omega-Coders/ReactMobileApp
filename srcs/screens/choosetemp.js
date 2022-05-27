@@ -4,7 +4,7 @@ import { useRoute } from '@react-navigation/native';
 import Text_Size from './Textscaling';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import {width_screen,height_screen} from './Dimensions/';
-import Svgimg from '../imgs/undraw_creative_team_re_85gn.svg';
+import Svgimg from '../imgs/chooseimg.svg';
 
 const Tempchoosen = ({ navigation }) => {
    const route = useRoute();
@@ -28,8 +28,7 @@ const Tempchoosen = ({ navigation }) => {
             </View>
             <View style={styles.p3}>
                <View style={styles.p3_1}>
-                     <Image source={require('../imgs/undraw_Creative_team_re_85gn.png')}
-                     style={styles.i1}/>
+               <Svgimg height={hp('42%')} width={wp('98%')}/>
                </View>
             </View>
             <View style={styles.p4}>
@@ -102,11 +101,10 @@ const styles = StyleSheet.create({
   },
    p3:{
      flex:0.43,
-     backgroundColor:"pink"
+    // backgroundColor:"pink"
    },
    p3_1:{
       flex:1,
-      backgroundColor:"#000000"
    },
    i1:{
     flex:1,
