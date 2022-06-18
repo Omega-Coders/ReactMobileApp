@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
         fontSize: Text_Size.Text_size_Type_2,
         // marginTop: -80,
            marginLeft: wp('-3%'),
-        fontWeight: 'bold',
+       // fontWeight: 'bold',
         color: '#5F5FE3',
         textDecorationLine: 'underline'
     },
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
         fontSize: Text_Size.Text_size_Type_0,
          marginLeft: wp('20%'),
         // marginTop: 3,
-        fontWeight: 'Semibold',
+       // fontWeight: 'Semibold',
         color: "#353935"
     },
     boy: {
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
         // marginTop: -20,
          marginLeft: wp('3'),
         color: 'black',
-        fontWeight: "bold"
+        //fontWeight: "bold"
 
     },
     tlin: {

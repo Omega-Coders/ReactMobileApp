@@ -1,23 +1,21 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react'
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import Text_Size from './Textscaling';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-
+import SelectBox from 'react-native-multi-selectbox'
+import { xorBy } from 'lodash'
 import Svg, {
     Use,
     Image,
 } from 'react-native-svg';
-import {width_screen,height_screen} from './Dimensions'
-const wh=(wp('1%')*hp('1%'))/100
-
+import { width_screen, height_screen } from './Dimensions'
+const wh = (wp('1%') * hp('1%')) / 100
 import Svgimg from '../imgs/boy1.svg';
-
-const size = (width_screen*height_screen)
-
+const size = (width_screen * height_screen)
 const Dte = ({ navigation }) => {
     return (
-
-        <View style={styles.container}>
+       
+      <View style={styles.container}>
             <View style={styles.part_1}>
                 <View style={styles.circleshape}></View>
 
@@ -28,16 +26,17 @@ const Dte = ({ navigation }) => {
                 </View>
                 <View style={styles.part_2_2}>
                     <View>
-                        <Svgimg height={hp('90%')} width={wp('90%')}/>
+                        <Svgimg height={hp('90%')} width={wp('90%')} />
                     </View>
                 </View>
 
             </View>
             <View style={styles.part_3}>
-                <Text style={styles.dt}>
-                    Predefined Templates for you!..
-                </Text>
-
+                <View style={styles.pred}>
+                    <Text style={styles.dt}>
+                        Predefined Templates for you!..
+                    </Text>
+                </View>
             </View>
             <View style={styles.part_4}>
 
@@ -52,66 +51,151 @@ const Dte = ({ navigation }) => {
                     style={styles.proceed}
                     onPress={() => navigation.navigate('Edging')}
                 >
-                    <Text style={{ color: "white", fontWeight: "bold", fontSize:Text_Size.Text_size_Type_0 }}>proceed</Text>
+                    <Text style={{ color: "white", fontWeight: "bold", fontSize: Text_Size.Text_size_Type_0 }}>proceed</Text>
                 </ TouchableOpacity>
 
             </View>
 
-        </View>
+        </View> 
 
-      
+
 
     )
 }
+const K_OPTIONS = [
+    {
+        item: 'Register No',
+        id: 'JUVE',
+    },
+    {
+        item: 'Name',
+        id: 'RM',
+    },
+    {
+        item: 'Marks',
+        id: 'BR',
+    },
+    {
+        item: 'Branch',
+        id: 'PSG',
+    },
+    {
+        item: 'Section',
+        id: 'FBM',
+    },
+]
 
-export default Dte
+function App({navigation}) {
+    const [selectedTeam, setSelectedTeam] = useState({})
+    const [selectedTeams, setSelectedTeams] = useState([])
+    return (
+        <View style={{ margin: 30 }}>
+            <View style={{ width: '100%', alignItems: 'center' }}>
+                <View style={styles.container}>
+                    <View style={styles.part_1}>
+                        <View style={styles.circleshape}></View>
+                        <View style={styles.csp}></View>
+                    </View>
+                    <View style={styles.part_2}>
+                            <View style={styles.by}>
+                                <Text style={styles.pred}>Predefined Templates for you</Text>
+                            </View>
+                            <View style={styles.svb}>
+                                <Svgimg height={hp('110%')} width={wp('110%')} />
+                            </View>
+                    </View>
+                    <View style={styles.part_5}>
+                        <View style={styles.bn}>
+                            <TouchableOpacity
+                                style={styles.proceed}
+                                onPress={() => navigation.navigate('Edging')}
+                            >
+                                <Text style={{ color: "white", fontWeight: "bold", fontSize: Text_Size.Text_size_Type_6 }}>proceed</Text>
+                            </ TouchableOpacity>
+                        </View>
+                    </View>
+
+                </View>
+            </View>
+            <View style={styles.dropdow}>
+                <View style={{ height: 10 }} />
+                <Text style={{ fontSize: 20, paddingBottom: 6, color: "#5364b2", fontWeight: "bold" }}>Template Components</Text>
+                <SelectBox
+                    label="Select Key"
+                    options={K_OPTIONS}
+                    selectedValues={selectedTeams}
+                    onMultiSelect={onMultiChange()}
+                    onTapClose={onMultiChange()}
+                    isMulti
+                />
+            </View>
+        </View>
+    )
+
+    function onMultiChange() {
+        return (item) => setSelectedTeams(xorBy(selectedTeams, [item], 'id'))
+    }
+
+    function onChange() {
+        return (val) => setSelectedTeam(val)
+    }
+}
+
+export default App
+
+
+//export default Dte
 const styles = StyleSheet.create({
     part_1: {
-        flex: 0.1
+        flex: 0.3
 
     },
     part_2: {
-        flex: 0.45,
-        flexDirection: 'row',
-
-    },
-    part_3: {
-        flex: 0.1,
-        alignItems:'center',
-        
-    },
-    
-    part_4: {
-        flex: 0.25,
-        alignItems:'center',
-        
-
-    },
-
-    temlets:{
-        
-        backgroundColor:'#5364b2',
-        borderRadius:wp('10%'),
-        height:hp('22%'),
-        width:wp('89%'),
+        flex: 0.3,
+        flexDirection: 'column',
+        marginTop:wp("30%"),
+        //backgroundColor:"red"
 
     },
     part_5: {
         flex: 0.1,
-        
-        alignItems:'center',
-
+        alignItems: 'center',
     },
-    proceed:{ height:hp('7%'),
-          width: wp('35%'),
-          justifyContent: "center", 
-          alignItems: "center", 
-          borderRadius: 20,
-          backgroundColor:'#5364b2',
-        fontStyle:'Inter' },
-    
-
-
+    bn: {
+        flex: 1
+    },
+    pred: {
+      //  backgroundColor: "black",
+        fontSize: Text_Size.Text_size_Type_1,
+        color: "#5364b2",
+        fontWeight: "800",
+        fontFamily: "Inter"
+    },
+    proceed: {
+        height: hp('7%'),
+        width: wp('35%'),
+        justifyContent: "center",
+        alignItems: "center",
+        borderRadius: 20,
+        backgroundColor: '#5364b2',
+        fontStyle: 'Inter',
+        marginTop: wp("128%")
+    },
+    dropdow: {
+        marginTop: wp("103%")
+    },
+    svb:{
+     //backgroundColor:"blue",
+     flex:0.6,
+     marginTop:wp("-14%"),
+     marginLeft:wp("25%")
+    },
+    by: {
+        flex:0.4,
+      // backgroundColor:"violet",
+        marginTop: wp("-5%"),
+        marginLeft:wp("25%"),
+    },
     container: {
         flex: 1,
         flexDirection: 'column',
@@ -120,51 +204,32 @@ const styles = StyleSheet.create({
         //   padding: 20
     },
     circleshape: {
-            width:wh*270,
-            height:wh*270,
-            borderRadius:wh*129,
-            backgroundColor: '#5364b2',
-             marginTop:wh*-90,
-             marginLeft:wh*-60
-    },
-    part_2_1: {
-        flex: 0.1
-
+    width: wh * 270,
+    height: wh * 270,
+    borderRadius: wh * 129,
+    backgroundColor: '#5364b2',
+    marginTop: wh * -90,
+    marginLeft: wh * -60
     },
     part_2_2: {
         flex: 0.9,
-       // backgroundColor:'green'
+        backgroundColor: 'green',
+        marginTop: wp('38%')
 
     },
 
-    csp: {
-        
-          height:hp('14%'),
-          width:wp('19%'),
-        // borderRadius:150/2,
-        backgroundColor: '#5364b2',
-        borderRadius:wp('22%'),
-        backgroundColor: '#5364b2',
-        marginTop:wp('-8%'),
-        // marginTop:-85,
-         marginLeft:wp('-4%'),
-    },
-    // boy: {
-    //      flex:1,
-    //     width: wp('90%'),
-    //     height: hp('50%'),
-    //       marginTop:-130,
-    //       marginLeft:-10
-    //},
-    dt: {
-          
-        // fontFamily:'Inter',
-         fontSize:Text_Size.Text_size_Type_1,
-        // marginTop:-10,
-        // marginLeft:-61,
-         fontWeight: 'bold',
-         color: '#5364B2', 
-    },
+    /* csp: {
+         
+           height:hp('14%'),
+           width:wp('19%'),
+         // borderRadius:150/2,
+         backgroundColor: '#5364b2',
+         borderRadius:wp('22%'),
+         backgroundColor: '#5364b2',
+         marginTop:wp('-8%'),
+         // marginTop:-85,
+          marginLeft:wp('-4%'),
+     },*/
     gup: {
         // fontFamily:'Inter',
         // fontSize:17.5,
