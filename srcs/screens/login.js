@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Image, StyleSheet, TouchableOpacity ,SafeAreaView} from 'react-native';
 import Text_Size from './Textscaling';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Svgimg from '../imgs/home_img.svg';
+import Svgimg1 from '../imgs/logo.svg/';
 
 const TextExample = ({ navigation }) => {
    return (
-      <View style={styles.container}>
+      
+          <View style={styles.container}>
 
          <View style={styles.part_1}>
-         <Svgimg height={hp('35%')} width={wp('100%')}/>
-
+            <View style={styles.part_1_1}>
+               <Svgimg  height={hp('75%')} width={wp('100%')}/>
+            </View>
          </View>
          <View style={styles.part_2}>
               <Text style={styles.part_2_1}>
@@ -22,8 +25,8 @@ const TextExample = ({ navigation }) => {
 
          </View>
          <View style={styles.part_3}>
-               <Image style={styles.part_3_1}
-                  source={require('../imgs/ezgif.com-gif-maker-removebg-preview.png')} />
+         <Svgimg1 style={styles.part_3_1}
+         height={hp('35%')} width={wp('85%')}/>
                <Text style={styles.part_3_2}>
                   Sprightly
                </Text>
@@ -67,7 +70,10 @@ const styles = StyleSheet.create({
      // backgroundColor: "green"
 
    },
-           
+     part_1_1:{
+      flex:1,
+      marginTop:wp('-40%')
+     },      
    part_2: {
       flex: 0.1,
       
@@ -179,10 +185,6 @@ const styles = StyleSheet.create({
                     fontWeight: "bold", 
                     fontSize: Text_Size.Text_size_Type_0,
          },
-
-
-
-
    container: {
       flex: 1,
       

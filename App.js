@@ -18,11 +18,6 @@ LogBox.ignoreLogs([
 ])
 
 
-
- 
-
-
-
 const Stack = createNativeStackNavigator();
 
 export default MyStack = () => {
