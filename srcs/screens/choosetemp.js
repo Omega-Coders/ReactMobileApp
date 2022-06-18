@@ -162,13 +162,7 @@ const ModalPoup = ({visible, children}) => {
             <View style={styles.p2}>
                 
                   <View style={styles.p2_2}>
-                 <TextAnimator
-                     content='For the things we have to learn before we can do them, we learn by doing them. ️️️️️️REACT NATIVE ❤️️️️'
-                     textStyle={styles.textStyle}
-                     style={styles.containerStyle}
-                     duration={500}
-                     onFinish={_onFinish}
-                     />
+                 
                      </View>
                      <View style={styles.p2_2_1}>
                          <Text style={styles.t2}>
