@@ -38,7 +38,7 @@ const Edgs = ({ navigation }) => {
                         <Text style={styles.xsheet}>
                             Provide Your XL-Sheet Link:
                         </Text>
-                        <TextInput style={styles.tlin} placeholder={"Place Your XL-Sheet link here"} />
+                        <TextInput style={styles.tlin} placeholder={""}/>
 
              </View>
              <View style={styles.part_5}>
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
         // marginTop: -20,
          marginLeft: wp('3'),
         color: 'black',
-        //fontWeight: "bold"
+       // fontWeight: "bold"
 
     },
     tlin: {
@@ -162,7 +162,9 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         borderRadius: 20,
         alignSelf:'center',
-        alignItems:'center'
+        alignItems:'center',
+        color:'black'
+        
 
     }
 });

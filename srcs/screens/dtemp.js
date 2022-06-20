@@ -89,7 +89,7 @@ function App({navigation}) {
     const [selectedTeam, setSelectedTeam] = useState({})
     const [selectedTeams, setSelectedTeams] = useState([])
     return (
-        <View style={{ margin: 30 }}>
+        <View style={{ margin: 30 }} >
             <View style={{ width: '100%', alignItems: 'center' }}>
                 <View style={styles.container}>
                     <View style={styles.part_1}>
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         backgroundColor: '#5364b2',
         fontStyle: 'Inter',
-        marginTop: wp("128%")
+        marginTop: wp("100%")
     },
     dropdow: {
         marginTop: wp("103%")
@@ -199,6 +199,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         flexDirection: 'column',
+        backgroundColor:"white",
         //   alignItems: 'center',
         //   marginTop: 100,
         //   padding: 20

@@ -18,25 +18,8 @@ LogBox.ignoreLogs([
 
 import Award from './imgs/boy1.svg';
 
-export default class ImageDisplay extends React.Component {
-	render() {
-		return (
-			<View style={styles.container}>
-				<Award />
-			</View>
-		);
-	}
-};
 
-const styles = StyleSheet.create({
-	container: {
-		flex: 1,
-		justifyContent: 'center', 
-		alignSelf: 'center'
-	},
-});
 
-/*
 
 export default function ImageDisplay({navigationz}){
 
@@ -45,13 +28,13 @@ export default function ImageDisplay({navigationz}){
         
     <View >
      
-      <Image source={{uri:('file://'+route.params.path)}} style={{width: '100%', height: '100%'}}/>
+      <Image source={{uri:('file://'+route.params.path)}} style={{width: '100%', height: '100%'}} resizeMode='contain'/>
 
     </View>
 
   )
 
-}*/
+}
 //<Image source={require(route.params.path)} /> <Image source={require('./Default.jpg')} />
 
 //<Image source={{uri:'file:///storage/emulated/0/DCIM/Restored/IMG20220316134958.jpg', width: 100,  height: 100}} />

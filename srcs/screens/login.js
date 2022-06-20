@@ -1,64 +1,52 @@
-import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, TouchableOpacity ,SafeAreaView} from 'react-native';
+import React, { Component, useState } from 'react';
+import { View, Text, Image, StyleSheet, TouchableOpacity ,StatusBar,SafeAreaView} from 'react-native';
 import Text_Size from './Textscaling';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Svgimg from '../imgs/home_img.svg';
 import Svgimg1 from '../imgs/logo.svg/';
 
+const STYLES=['default','dark-content','light-content'];
+const TRANSITIONS = ['fade','slide','none'];
+
 const TextExample = ({ navigation }) => {
    return (
-      
-          <View style={styles.container}>
+      <>
+      <StatusBar
+         translucent={true} 
+         backgroundColor={'transparent'} 
+         barStyle='dark-content'
+         hidden={false} />
+       
+       <SafeAreaView style={[styles.container]}> 
 
-         <View style={styles.part_1}>
-            <View style={styles.part_1_1}>
-               <Svgimg  height={hp('75%')} width={wp('100%')}/>
+            <View style={styles.part_1}>
+               <View style={styles.part_1_1}>
+                  <Svgimg height={hp('75%')} width={wp('100%')} />
+               </View>
             </View>
-         </View>
-         <View style={styles.part_2}>
-              <Text style={styles.part_2_1}>
+            <View style={styles.part_2}>
+               <Text style={styles.part_2_1}>
                   A New Method for
-               </ Text>
+               </Text>
                <Text style={styles.part_2_2}>
-                   DataAutomation!..
+                  DataAutomation!..
                </Text>
 
-         </View>
-         <View style={styles.part_3}>
-         <Svgimg1 style={styles.part_3_1}
-         height={hp('35%')} width={wp('85%')}/>
-               <Text style={styles.part_3_2}>
-                  Sprightly
-               </Text>
-
-         </View>
-         <View style={styles.part_4}>
-            <View style={styles.part_4_1}>
-
-                     <View style={styles.part_4_1_1}>
-                          <Text style={styles.part_4_1_1}>
-                             Get Started
-                          </Text>
-
-                     </View>
-                     <View style={styles.part_4_1_2}>
-                     <Image style={styles.account}
-                           source={require('../imgs/account-icon-25499.png')} />
-
-                     </View>
-
             </View>
-            <View style={styles.part_4_2}>
-                        <TouchableOpacity style={styles.touch}
-                           onPress={() => navigation.navigate('ChooseTemplates')}>
-                           <Text style={styles.testt}> Sign In with Google</Text>
-                        </ TouchableOpacity>
+            <View style={styles.part_3}>
+               <Svgimg1 style={styles.part_3_1}
+                  height={hp('35%')} width={wp('85%')} />
             </View>
-               
-
-         </View>
-         
-      </View>
+            <View style={styles.part_4}>
+               <View style={styles.part_4_2}>
+                  <TouchableOpacity style={styles.touch}
+                     onPress={() => navigation.navigate('ChooseTemplates')}>
+                     <Text style={styles.testt}> Sign In with Google</Text>
+                  </TouchableOpacity>
+               </View>
+            </View>
+            </SafeAreaView>
+         </>
    )
 }
 
@@ -67,18 +55,16 @@ export default TextExample
 const styles = StyleSheet.create({
    part_1: {
       flex: 0.35,
-     // backgroundColor: "green"
+    //  backgroundColor: "green"
 
    },
      part_1_1:{
-      flex:1,
-      marginTop:wp('-40%')
+      flex:0.5,
+      marginTop:hp('-18%')
      },      
    part_2: {
       flex: 0.1,
-      
-    //  backgroundColor: "yellow"
-
+     //backgroundColor: "yellow"
 
    },
 
@@ -104,32 +90,31 @@ const styles = StyleSheet.create({
                   color: '#104A6C',
                   textShadowColor: '#104A6C'
                },
-   part_3: {
+     part_3: {
       flex: 0.4,
       alignItems: 'center',
-    // backgroundColor: "green"
-
+    // backgroundColor: "maroon"
    },
             part_3_1: {
                flex: 0.9,
                height: hp('30%'),
-               width: wp('50%')
+               width: wp('50%'),
+               marginTop:hp("3%")
 
             },
             part_3_2: {
                flex: 0.1,
                alignItems: 'center',
-              
                fontWeight: 'bold',
-               fontSize: Text_Size.Text_size_Type_1,
-               color: '#9760D8'
+               fontSize: Text_Size.Text_size_Type_8,
+               color: 'black'
 
    },
 
    part_4: {
       flex: 0.15,
       alignItems: 'center',
-     // backgroundColor: "red"
+    //  backgroundColor: "red"
 
    },
                part_4_1: {
@@ -169,6 +154,8 @@ const styles = StyleSheet.create({
                part_4_2: {
                   flex: 0.85,
                   alignItems: 'center',
+                //  backgroundColor:"green",
+                  marginTop:hp("2%")
 
            },
            touch:{
@@ -177,7 +164,7 @@ const styles = StyleSheet.create({
                   justifyContent: "center", 
                   alignItems: "center", 
                   borderRadius: wp('4%'), 
-                  backgroundColor: "#287187", 
+                  backgroundColor: "#5364b2", 
                   //marginTop: wp('60%')
                },
 
@@ -187,7 +174,7 @@ const styles = StyleSheet.create({
          },
    container: {
       flex: 1,
-      
+      backgroundColor:"white"
       // marginTop: 100,
       // padding: 20
    },

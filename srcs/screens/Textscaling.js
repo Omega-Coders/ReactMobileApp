@@ -10,7 +10,7 @@ Scale:{
     Text_size_Type_5:width_screen*0.054,
     Text_size_Type_6:width_screen*0.0478,
     Text_size_Type_7:width_screen*0.08,
-    Text_size_Type_8:width_screen*0.09,
+    Text_size_Type_8:width_screen*0.085,
 },
 }
 const Text_Size=Text_Size_Type.Scale;

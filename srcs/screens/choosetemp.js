@@ -9,6 +9,8 @@ import {
    Text,
    TouchableOpacity,
    Animated,
+   StatusBar,
+   SafeAreaView
  } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import Text_Size from './Textscaling';
@@ -16,64 +18,81 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import {width_screen,height_screen} from './Dimensions/';
 import Svgimg from '../imgs/chooseimg.svg';
 import TextAnimator from '../screens/TextAnimator';
+import { SafeAreaInsetsContext } from 'react-native-safe-area-context';
+
+
+const STYLES=['default','dark-content','light-content'];
+const TRANSITIONS = ['fade','slide','none'];
 
 const Tempchoosen = ({ navigation }) => {
    const route = useRoute();
+   const [hidden,setHidden]=useState(false);
+   const [StatusBarStyle,setStatusBarStyle]=useState(STYLES[0]);
+   const [StatusBarTransition, setStatusBarTransition]=useState(TRANSITIONS[0]);
    return (
-      <View style={styles.container}>
+      <>
+      <StatusBar
+      animated={true}
+      backgroundColor="white"
+      barStyle={StatusBarStyle}
+      showHideTransition={StatusBarTransition}
+      hidden={hidden} 
+       />
+         <SafeAreaView style={styles.container}>
             <View style={styles.p1}>
             </View>
             <View style={styles.p2}>
-                  <View style={styles.p2_1}>
-                  </View>
-                  <View style={styles.p2_2}>
-                    
-                           <View style={styles.p2_2_1}>
-                         <Text style={styles.t2}>
+               <View style={styles.p2_1}>
+               </View>
+               <View style={styles.p2_2}>
+
+                  <View style={styles.p2_2_1}>
+                     <Text style={styles.t2}>
                         Choose Templates as per Your preference
                      </Text>
-                     </View>
                   </View>
+               </View>
             </View>
             <View style={styles.p3}>
                <View style={styles.p3_1}>
-               <Svgimg height={hp('42%')} width={wp('98%')}/>
+                  <Svgimg height={hp('42%')} width={wp('98%')} />
                </View>
             </View>
             <View style={styles.p4}>
-                  <View style={styles.p4_1}>
-                     <Text style={styles.t3}>
-                              Choose Templates
-                           </Text> 
-                           </View>
-                  </View>
+               <View style={styles.p4_1}>
+                  <Text style={styles.t3}>
+                     Choose Templates
+                  </Text>
+               </View>
+            </View>
 
 
             <View style={styles.p5}>
-           
-            <View style={styles.p5_1}> 
+
+               <View style={styles.p5_1}>
                   <View style={styles.b1}>
-                  
-                  <TouchableOpacity style={styles.p5_1_1} 
-                  onPress={() => navigation.navigate('DefaultTemplates')}>
-                  <Text style={styles.t4}>
-                       Default
-                     </Text> 
+
+                     <TouchableOpacity style={styles.p5_1_1}
+                        onPress={() => navigation.navigate('DefaultTemplates')}>
+                        <Text style={styles.t4}>
+                           Default
+                        </Text>
                      </TouchableOpacity>
                   </View>
 
+               </View>
+               <View style={styles.p5_2}>
+                  <View style={styles.b2}>
+                     <View style={styles.p5_1_2}>
+                        <Text style={styles.t5}>
+                           Custom
+                        </Text>
+                     </View>
+                  </View>
+               </View>
             </View>
-            <View style={styles.p5_2}> 
-            <View style={styles.b2}>
-            <View style={styles.p5_1_2}>
-            <Text style={styles.t5}>
-                      Custom
-                     </Text> 
-            </View>
-         </View>           
-            </View>
-            </View>
-      </View>
+            </SafeAreaView>
+         </>
 
    )
 }
@@ -128,8 +147,8 @@ const ModalPoup = ({visible, children}) => {
              </TouchableOpacity>
            </View>
          </View>
-
-                  <View style={styles.po1}>
+      
+               <View style={styles.po1}>
                         <View style={styles.po2}>
                            <Text style= {styles.choose}>
                            Choose Accordingly
@@ -144,7 +163,7 @@ const ModalPoup = ({visible, children}) => {
                                        </Text> 
                                        </TouchableOpacity>
                               </View>
-                           <View style={styles.po3_2}>
+                              <View style={styles.po3_2}>
                               <TouchableOpacity style={styles.cu}>
                                     <Text style={styles.cus}>
                                        Custom
@@ -155,34 +174,37 @@ const ModalPoup = ({visible, children}) => {
                    </View>
                         </ModalPoup>
           <View style={styles.container}>
-            <View style={styles.p1}>
-                        <View style={styles.circleshape}></View>
-                        <View style={styles.csp}></View>
-            </View>
-            <View style={styles.p2}>
-                
-                  <View style={styles.p2_2}>
-                 
-                     </View>
-                     <View style={styles.p2_2_1}>
-                         <Text style={styles.t2}>
-                        Choose Templates as you prefered
-                     </Text>
-                     </View>
-                  
-            </View>
-            <View style={styles.p3}>
-               <View style={styles.p3_1}>
-               <Svgimg height={hp('42%')} width={wp('98%')}/>
-               </View>
-               <View style={styles.cbn}>
-               <Button title="Choose Template" onPress={() => setVisible(true)} color="#5364b2" />
-               </View>
-              
-            </View>
-                  </View>
- 
-                     </View>
+                        <View style={styles.p1}>
+                               <View style={styles.p1_1}>
+                                    <View style={styles.circleshape}></View>
+                               </View>
+                               <View style={styles.p1_2}>
+                                    <View style={styles.csp}></View>
+                               </View>
+                        </View>
+                        <View style={styles.p2}>
+                           
+                                 <Text style={styles.t1}>Welcome Back</Text>
+                           
+                             
+                                    <Text style={styles.t2}>
+                                          Choose Templates as you prefered
+                                    </Text>
+                              
+                        </View>
+                        <View style={styles.p3}>
+                             <View style={styles.part_3_1}>
+                               <Svgimg  height={hp('35%')} width={wp('100%')}/>
+                             </View>
+                               <View style={styles.bun}>
+                                   <View style={styles.chb}>
+                                 <Button title="Choose Template" onPress={() => setVisible(true)} color="#5364b2" />
+                                 </View>
+                              </View>
+                        </View>
+          </View>
+     </View>
+                     
    );
  };
 
@@ -192,21 +214,32 @@ const styles = StyleSheet.create({
    container:{
       flex:1,
       backgroundColor:"#ffffff",
-      flexDirection:"column"
+     // flexDirection:"column"
    },
    opp:{
     marginTop:wp("30%"),
     backgroundColor:"#5364b2"
-   // width:wp("30%")
+   },
+   p1:{
+      flex:0.27,
+     // backgroundColor:"green",
+      flexDirection:"column"
+   },
+   p1_1:{
+     flex:0.5,
+    // backgroundColor:"maroon"
+   },
+   p1_2:{
+     flex:0.5,
+    // backgroundColor:"blue"
    },
    circleshape: {
-      flex:0.5,
-      width: wp("40%"),
+      width: wp("45%"),
       height: hp("20%"),
       borderRadius:  wp("270%"),
       backgroundColor: '#5364b2',
-      marginTop:wp("-17%"),
-      marginLeft:wp("-18%")
+      marginTop:hp("-6%"),
+      marginLeft:wp("-15%")
      /* width: wp * 270,
       height: hp * 270,
       borderRadius: wp * 129,
@@ -214,44 +247,65 @@ const styles = StyleSheet.create({
       marginTop: wp * -90,
       marginLeft: wp * -60*/
       },
-      csp:{
-         flex:0.5,
-         width: wp("30%"),
-         height: hp("10%"),
-         borderRadius:  wp("170%"),
+   csp:{
+         width: wp("45%"),
+         height: hp("15%"),
+         borderRadius:  wp("90%"),
          backgroundColor: '#5364b2',
-         marginTop:wp("-10%"),
-         marginLeft:wp("-18%")
+         marginTop:hp("-5%"),
+         marginLeft:wp("-30%")
+      },
+      chb:{
+       flex:0.5,
+       width:wp("39%"),
+     //  backgroundColor:"green",
+       marginTop:hp("-13%")
       },
    opp1:{
      //flex:1,
      marginTop:wp("9%"),
      width:wp("45%"),
      marginLeft:wp("27%"),
-    // backgroundColor:"red"
+    //backgroundColor:"red"
    },
+   part_3_1:{
+      flex:0.7,
+     // backgroundColor:"green",
+      marginTop:wp('0%'),
+      alignSelf:"center"
+     },
    po1:{
-   flex:1
+  // flex:1
    },
    po2:{
-     flex:0.4,
+     //flex:0.4,
     // backgroundColor:"red"
    },
    choose:{
-      fontSize: 20, 
-      marginTop:wp("5%"),
+      fontSize: Text_Size.Text_size_Type_5, 
+      marginTop:wp("4%"),
       textAlign: 'center',
       fontWeight:"bold",
       color:"black"
    },
+   img:{
+    flex:0.7,
+   // backgroundColor:"green"
+   },
+   bun:{
+    flex:0.3,
+  // backgroundColor:"red",
+   
+    alignSelf:"center",
+    marginLeft:wp("0%"),
+   },
    po3:{
-     flex:0.6,
-     flexDirection:"row",
-    // backgroundColor:"yellow"
+   flexDirection:"row"
    },
    po3_1:{
       flex:0.5,
-    // backgroundColor:"blue"
+     //backgroundColor:"blue",
+     marginTop:wp("0%"),
    },
    po3_2:{
       flex:0.5,
@@ -262,7 +316,7 @@ const styles = StyleSheet.create({
       width:wp("30%"),
       height:hp("6%"),
       borderRadius:15,
-      marginTop:wp("8%"),
+      marginTop:hp("3%"),
       marginLeft:wp("2.5%")
    },
    cu:{
@@ -270,19 +324,23 @@ const styles = StyleSheet.create({
       width:wp("30%"),
       height:hp("6%"),
       borderRadius:15,
-      marginTop:wp("8%"),
+      marginTop:hp("3%"),
       marginLeft:wp("2.5%")
    },
    def:{
+      flex:1,
     color:"white",
-    marginLeft:wp("5%"),
-    marginTop:wp("2%"),
+    marginLeft:wp("0%"),
+    marginTop:hp("1%"),
+    alignSelf:"center",
     fontSize:Text_Size.Text_size_Type_1
    },
    cus:{
+      flex:1,
       color:"white",
-      marginTop:wp("2%"),
-      marginLeft:wp("5%"),
+      marginTop:hp("1%"),
+      marginLeft:wp("0%"),
+      alignSelf:"center",
       fontSize:Text_Size.Text_size_Type_1
      },
    modalBackGround: {
@@ -306,69 +364,70 @@ const styles = StyleSheet.create({
       alignItems: 'flex-end',
       justifyContent: 'center',
     },
-   p1:{
-      flex:0.2,
-      //backgroundColor:"red"
-   },
    p2:{
       flex:0.13,
      // backgroundColor:"yellow",
       flexDirection:"column"
    },
    p2_2:{
-      flex:0.5,
+      flex:0.6,
       marginLeft:wp("5%"),
       backgroundColor:"#ffffff",
+     // backgroundColor:"red",
+      marginTop:hp("0%")
    },
    p2_2_1:{
-      flex:0.5,
+      flex:0.4,
       backgroundColor:"#ffffff",
+     // backgroundColor:"green",
       marginLeft:wp("15%"),
       justifyContent:"center",
-      marginTop:wp("1%")
-  },
+      marginTop:hp("1%")
+         },
    p3:{
-     flex:0.77,
-   // backgroundColor:"pink",
-    flexDirection:"column"
+     flex:0.6,
+    // backgroundColor:"pink",
+    
+   },
+   pb1:{
+  // backgroundColor:"green",
+   marginTop:hp("0%")
    },
    p3_1:{
-      flex:0.87,
-      //backgroundColor:"#ffffff",
-     // backgroundColor:"red"
+      flex:0.7,
+      backgroundColor:"#ffffff",
+     // backgroundColor:"red",
+       marginTop:hp("0%"),
    },
    cbn:{
-    flex:0.03,
-    //backgroundColor:"#ffffff",
-   // backgroundColor:"blue",
-    marginTop:wp("-379%"),
-    width:wp("45%"),
-    marginLeft:wp("25%"),
+      flex:0.4,
+      //backgroundColor:"#ffffff",
+     // backgroundColor:"blue",
+      marginTop:hp("-13%"),
+      width:wp("45%"),
+      marginLeft:wp("25%"),
    },
    i1:{
     flex:1,
     width:wp("100%"),
     height:hp("100%")
-
    },
    p4:{
       //flex:0.1,
-      backgroundColor:"green"
-     
+     // backgroundColor:"green"
    },
    p4_1:{
    flex:0.9,
    backgroundColor:"#ffffff",
    alignItems:"center",
-   marginTop:wp("1%"),
+   marginTop:hp("1%"),
    marginLeft:wp("10%")
    },
    p5:{
       
-      backgroundColor:"yellow",
+     // backgroundColor:"yellow",
       flexDirection:"row"
    },
-   
    p5_1:{
       flex:0.5,
    backgroundColor:"#ffffff"
@@ -377,7 +436,7 @@ const styles = StyleSheet.create({
     flex:0.6,
     width:wp("40%"),
     marginLeft:wp("4%"),
-    marginTop:wp("1.5%"),
+    marginTop:hp("1.5%"),
    //backgroundColor:"#6C63FF"
    },
    p5_2:{
@@ -388,22 +447,29 @@ const styles = StyleSheet.create({
       flex:0.6,
       width:wp("30%"),
       marginLeft:wp("5%"),
-      marginTop:wp("1.5%"),
+      marginTop:hp("1.5%"),
       backgroundColor:"#6C63FF"
      },
 
    t1:{
-      fontSize:Text_Size.Text_size_Type_8,
+     fontSize:Text_Size.Text_size_Type_8,
      fontWeight:"bold",
      color:"#6C63FF",
+     marginTop:hp("0%"),
+     marginLeft:wp("8%"),
+     flex:0.6,
+    // backgroundColor:"blue"
     
    },
    t2:{
+      flex:0.4,
+     // backgroundColor:"red",
       fontSize:Text_Size.Text_size_Type_4,
       fontWeight:"bold",
       color:"black",
       justifyContent:"center",
-      marginTop:wp("-8%")
+      marginTop:hp("-3%"),
+      marginLeft:wp("19%"),
    },
    t3:{
       flex:1,
