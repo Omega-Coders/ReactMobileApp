@@ -166,7 +166,7 @@ const ModalPoup = ({visible, children}) => {
                               <View style={styles.po3_2}>
                               <TouchableOpacity style={styles.cu}>
                                     <Text style={styles.cus}>
-                                       Custom
+                                       Custo
                                        </Text> 
                                        </TouchableOpacity>
                               </View>

@@ -4,6 +4,8 @@ import Text_Size from './Textscaling';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Svgimg from '../imgs/xl_boy.svg';
 
+//import RNGeniusScan from '@thegrizzlylabs/react-native-genius-scan';
+
 const Edgs = ({ navigation }) => {
     return (
 

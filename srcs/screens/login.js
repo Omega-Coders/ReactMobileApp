@@ -35,7 +35,7 @@ const TextExample = ({ navigation }) => {
             </View>
             <View style={styles.part_3}>
                <Svgimg1 style={styles.part_3_1}
-                  height={hp('35%')} width={wp('85%')} />
+                  height={hp('35%')} width={wp('85%')}/>
             </View>
             <View style={styles.part_4}>
                <View style={styles.part_4_2}>

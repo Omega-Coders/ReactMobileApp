@@ -13,6 +13,7 @@
     "@react-native-community/image-editor": "^2.3.0",
     "@react-navigation/native": "^6.0.10",
     "@react-navigation/native-stack": "^6.6.2",
+    "@thegrizzlylabs/react-native-genius-scan": "^4.5.1",
     "ignore-warnings": "^0.2.1",
     "react": "17.0.2",
     "react-native": "^0.68.2",
