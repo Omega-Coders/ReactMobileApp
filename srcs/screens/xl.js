@@ -4,7 +4,7 @@ import Text_Size from './Textscaling';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import Svgimg from '../imgs/xl_boy.svg';
 
-//import RNGeniusScan from '@thegrizzlylabs/react-native-genius-scan';
+import RNGeniusScan from '@thegrizzlylabs/react-native-genius-scan';
 
 const Edgs = ({ navigation }) => {
     return (
@@ -46,7 +46,7 @@ const Edgs = ({ navigation }) => {
              <View style={styles.part_5}>
                 <TouchableOpacity
                     style={{ height: hp('9') ,width: wp('45'), justifyContent: "center", alignItems: "center", borderRadius: wp(7), backgroundColor: "#5364b2", marginTop: hp(-0.5) }}
-                    onPress={() => navigation.navigate('Camera')}
+                    onPress={() => navigation.navigate('CollectImage')}
                 >
                     <Text style={{ color: "white", fontWeight: "bold", fontSize:Text_Size.Text_size_Type_1  }}> Start Scanning</Text>
                 </TouchableOpacity>

@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { StyleSheet, View, Alert ,Button,Text} from 'react-native'
 
 import Home from './srcs/Home';
-import Camera from './srcs/Camera';
 import CustomButton from './srcs/CustomButton';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -13,6 +12,7 @@ import Nearer from './srcs/screens/preview';
 import Edgs from './srcs/screens/xl';
 import {LogBox} from "react-native";
 import ImageDisplay from './srcs/ImageDisplay';
+import CollectImage from './srcs/CollectImage'
 LogBox.ignoreLogs([
 "exported from 'deprecated-react-native-prop-types'.",
 ])
@@ -31,8 +31,10 @@ export default MyStack = () => {
         <Stack.Screen name="DefaultTemplates" component={Dte} />
         <Stack.Screen name="Preview" component={Nearer} />
         <Stack.Screen name="Edging" component={Edgs} />
+        <Stack.Screen name="CollectImage" component={CollectImage} />
+
         <Stack.Screen name="Home" component={Home} options={{ title: 'Welcome' }}/>
-        <Stack.Screen name="Camera" component={Camera} />
+       
         <Stack.Screen name="ImageDisplay" component={ImageDisplay} />
       </Stack.Navigator>
     </NavigationContainer>

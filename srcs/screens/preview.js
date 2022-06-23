@@ -6,40 +6,26 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import {width_screen,height_screen} from './Dimensions/'
 import ImageEditor from "@react-native-community/image-editor";
 
-
-import Tflite from 'tflite-react-native';
+import RNGeniusScan from '@thegrizzlylabs/react-native-genius-scan';
+import RNTextDetector from "rn-text-detector";
  
  
-let tflite = new Tflite();
-var model_file  = 'models/model_unquant.tflite'
-var lables_file ='models/labels.txt'
 
 const Nearer = ({ navigation }) => {
    const route = useRoute();
-   
-   const [text, setText] = useState('')
-   //loading model
-   tflite.loadModel({model: model_file,labels: lables_file},(err,res)=>{
-      if(err)console.log(err);
-      else console.log(res)
-    });
-    
-   //displaying model result 
-    const display = ()=>{
-      console.log(route.params.w,route.params.h);
-      tflite.runModelOnImage({
-         path: route.params.path ,
-        
-       },(err,res)=>{
-         if(err)console.log(err);
-         else{
-           console.log(res,'*');
-           setText(res);
-         };
-       })
-      
-    }
+   const [text ,setText] = useState('')
 
+
+   
+   const detect  = async()=>{
+      const visionResp = await RNTextDetector.detectFromUri(route.params.path);
+      console.log('visionResp', visionResp);
+      setText(JSON.stringify(visionResp))
+      
+
+   }
+
+  
     //cropping..
     const cropData = {
       
@@ -69,7 +55,7 @@ const Nearer = ({ navigation }) => {
                         Getting Nearer
                         <TouchableOpacity
                            style={{ height: hp("7%"), width: wp("25%"), justifyContent: "center", alignItems: "center", borderRadius: 40, backgroundColor: "#5364b2", marginTop: hp('3%') }}
-                           onPress={crop}>
+                           onPress={detect}>
                            <Text style={{ color: "white", fontWeight: "bold", fontSize: Text_Size.Text_size_Type_1 }}> Done</Text>
                         </ TouchableOpacity>
                      </Text>
@@ -82,15 +68,12 @@ const Nearer = ({ navigation }) => {
             </View>
             <View style={styles.p3}>
             <Image source={{ uri: ('file://' + route.params.path) }} style={{ width: wp('90%'), height: hp('66%'), marginTop: '-15%' }}  resizeMode="contain" />
-            <Text style={styles.text_cocor}>{JSON.stringify(text)}</Text>
+           
             <View style={styles.p3_1}>
-            <TouchableOpacity
-               style={{ height: hp("7%"), width: wp("25%"), justifyContent: "center", alignItems: "center", borderRadius: 40, backgroundColor: "#5364b2", marginTop: hp('3%') }}
-               onPress={display}>
-               <Text style={{ color: "white", fontWeight: "bold", fontSize: Text_Size.Text_size_Type_1 }}> Done</Text>
-            </ TouchableOpacity>
+               
+           
             </View>
-            </View>
+            </View><Text style={{color:'black'}}>{text}</Text>
       </View>
 
    )

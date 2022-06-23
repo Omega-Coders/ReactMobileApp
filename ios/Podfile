@@ -21,6 +21,10 @@ target 'scanApp' do
 
   pod 'react-native-cameraroll', :path => '../node_modules/@react-native-community/cameraroll'
 
+  pod 'RNGeniusScan', :path => '../node_modules/@thegrizzlylabs/react-native-genius-scan'
+
+  pod 'react-native-tesseract-ocr', :path => '../node_modules/react-native-tesseract-ocr'
+
   target 'scanAppTests' do
     inherit! :complete
     # Pods for testing

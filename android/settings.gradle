@@ -1,4 +1,8 @@
 rootProject.name = 'scanApp'
+include ':react-native-tesseract-ocr'
+project(':react-native-tesseract-ocr').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-tesseract-ocr/android')
+include ':@thegrizzlylabs_react-native-genius-scan'
+project(':@thegrizzlylabs_react-native-genius-scan').projectDir = new File(rootProject.projectDir, '../node_modules/@thegrizzlylabs/react-native-genius-scan/android')
 include ':@react-native-community_cameraroll'
 project(':@react-native-community_cameraroll').projectDir = new File(rootProject.projectDir, '../node_modules/@react-native-community/cameraroll/android')
 include ':@react-native-community_cameraroll'
