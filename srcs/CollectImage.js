@@ -4,11 +4,14 @@ import { Text, View, StyleSheet, TouchableOpacity, Button ,Image} from 'react-na
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import CustomButton from './CustomButton';
+import ImageSize from 'react-native-image-size'
 
 import RNGeniusScan from '@thegrizzlylabs/react-native-genius-scan';
 import ImagePicker from 'react-native-image-crop-picker';
+import Action from './functions/Action';
 
 import RNTextDetector from "rn-text-detector";
+import Text_Size from './screens/Textscaling';
 
 
 const CollectImage = ({ navigation }) => {
@@ -17,23 +20,18 @@ const CollectImage = ({ navigation }) => {
         
         RNGeniusScan.setLicenceKey('533c5006515e03080951025739525a0e4a1051055a5742493d0702530f0b0900550355')
         .then(() => {
-          return RNGeniusScan.scanWithConfiguration({  multiPage: false })
+          return RNGeniusScan.scanWithConfiguration({  multiPage: false,defaultFilter: 'none' })
   
         })
         .then((result) => {
             // Do something with the enhanced image
-            console.log('****',result,'**');
+           // console.log('****',result,'**');
 
                     
   
             const filepath =result['scans'][0]['enhancedUrl'];
-            console.log('**',typeof(filepath),'**');
-            Image.getSize(filepath, (width, height) => {console.log(width, height);
-            navigation.navigate('Preview', { path:filepath,w:width,h:height });
-            })
-            .catch((error) => {
-                console.log(error,"**")
-            })
+           // console.log('**',typeof(filepath),'**');
+            Action(navigation,filepath,data1);
             
             
          
@@ -42,36 +40,41 @@ const CollectImage = ({ navigation }) => {
     
       }
       const openGallery = ()=>{
+        
         ImagePicker.openPicker({
           
           cropping: false,
           freeStyleCropEnabled:true,
           
         }).then(image => {
-          console.log(image);
+         // console.log(image);
           
 
 
           RNGeniusScan.setLicenceKey('533c5006515e03080951025739525a0e4a1051055a5742493d0702530f0b0900550355')
                 .then(() => {
-                    return RNGeniusScan.scanWithConfiguration({ source: 'image', sourceImageUrl: image['path'] })
+                    return RNGeniusScan.scanWithConfiguration({ source: 'image', sourceImageUrl: image['path'],defaultFilter: 'none' })
                 })
                 .then((result) => {
                     // Do something with the enhanced image
-                    console.log('****',result,'**');
+                   // console.log('****',result,'**');
 
                     
   
                 const filepath =result['scans'][0]['enhancedUrl'];
-                console.log('**',typeof(filepath),'**');
-                Image.getSize(filepath, (width, height) => {console.log(width, height);
-                navigation.navigate('Preview', { path:filepath,w:width,h:height });
-                })
-                .catch((error) => {
-                    console.log(error,"**")
-                })
+              // console.log('**',filepath,'**');
+               
+              // console.log(filepath)
+                
+                Action(navigation,filepath,data1)
+
+                
+               
+                
         
           
+        }).catch(err=>{
+            console.log(err);
         });
          
         }).catch(err=>{
@@ -80,48 +83,235 @@ const CollectImage = ({ navigation }) => {
       
       }
     return (
-
-        <View style={styles.container}>
-            <View style={styles.part_1}>
-
-            <Button title='camera' onPress={Scanner}></Button>
-                
-
-            </View>
-            <View style={styles.part_2}>
-                <Button title='Gallery' onPress={openGallery}></Button>
-
-            </View>
-            
-
-        </View>
-
-      
-
-    )
+      <View style={styles.container}>
+           <View style={styles.part_0}>
+                          <View style={styles.part_0_1}>
+                                <View style={styles.circle}>
+                                </View>
+                           </View>
+                    </View>
+           <View style={styles.po3}>
+                   <View style={styles.po3_1}>
+                      <TouchableOpacity style={styles.df}
+                         onPress={Scanner}>
+                         <Text style={styles.def}>
+                           Camera
+                         </Text>
+                      </TouchableOpacity>
+                   </View>
+                   <View style={styles.po3_2}>
+                      <TouchableOpacity onPress={openGallery} style={styles.cu} >
+                         <Text style={styles.cus}>
+                           Gallery
+                         </Text>
+                      </TouchableOpacity>
+                   </View>
+                </View>
+      </View>
+  )
 }
 
 export default CollectImage
 const styles = StyleSheet.create({
-    container:{
-       flex:1,
-        flexDirection:'column',
-        alignItems:'center',
-       // backgroundColor:'red'
+  container:{
+     flex:1,
+      flexDirection:'column',
+      
+     // backgroundColor:'red'
+  },
+  part_0:{
+      flex:0.2,
+     // backgroundColor:"yellow"
+  },
+  part_0_1:{
+    flex:1,
+    //backgroundColor:"green"
+  },
+  circle:{
+     flex:0.9,
+     width: wp("64%"),
+     height: hp("30%"),
+     marginTop:hp("-20%"),
+     marginLeft:wp("-20%"),
+     borderRadius:  wp("150/2%"),
+     backgroundColor:'#6495ED',
+  },
+  po3:{
+      flex:0.8,
+     // flexDirection:"",
+     // backgroundColor:"red",
+     justifyContent:'center',
+     alignSelf:'center'
+    
+      },
+      po3_1:{
+         flex:0.5,
+        //backgroundColor:"blue",
+        marginLeft:wp("5%"),
+        marginTop:hp("10%"),
+      },
+      po3_2:{
+         flex:0.5,
+        // backgroundColor:"green",
+         marginLeft:wp("5%"),
+         marginTop:hp("-39%")
+      },
+      df:{
+        backgroundColor:"#6495ED",
+         width:wp("30%"),
+         height:hp("6%"),
+         borderRadius:15,
+         marginTop:hp("3%"),
+         marginLeft:wp("2.5%")
+      },
+      cu:{
+         backgroundColor:"#6495ED",
+         width:wp("30%"),
+         height:hp("6%"),
+         borderRadius:15,
+         marginTop:hp("3%"),
+         marginLeft:wp("2.5%")
+      },
+      def:{
+         flex:1,
+       color:"white",
+       marginLeft:wp("0%"),
+       marginTop:hp("1%"),
+       alignSelf:"center",
+       fontSize:Text_Size.Text_size_Type_1
+      },
+      cus:{
+         flex:1,
+         color:"white",
+         marginTop:hp("1%"),
+         marginLeft:wp("0%"),
+         alignSelf:"center",
+         fontSize:Text_Size.Text_size_Type_1
+        },
+      });
+const data =[{
+  "coordinates": {
+  "x": 0.516121332546533,
+  "y": 0.28749219109030333,
+  "w": 0.37885094567927347,
+  "h": 0.03177545144896194
+  },
+  "_id": "62b33ce05d13528bd83debe3",
+  "templateName": "VIT MID-1",
+  "key": "Date",
+  "regex": "string",
+  "__v": 0
+  }]
 
+const data1 = [
+  {
+          "coordinates": {
+          "x": 0.19974044940438687,
+          "y": 0.28295283334065474,
+          "w": 0.09874308713570168,
+          "h": 0.04388039664826179
+          },
+          "_id": "62b33c825d13528bd83debdf",
+          "templateName": "VIT MID-1",
+          "key": "Subject",
+          "regex": "string",
+          "__v": 0
+  },
+  {
+  "coordinates": {
+  "x": 0.516121332546533,
+  "y": 0.22696754429167118,
+  "w": 0.3748205861737651,
+  "h": 0.03934101249932418
+  },
+  "_id": "62b33cb55d13528bd83debe1",
+  "templateName": "VIT MID-1",
+  "key": "Reg N",
+  "regex": "string",
+  "__v": 0
+  },
+  {
+  "coordinates": {
+  "x": 0.516121332546533,
+  "y": 0.28749219109030333,
+  "w": 0.37885094567927347,
+  "h": 0.03177545144896194
+  },
+  "_id": "62b33ce05d13528bd83debe3",
+  "templateName": "VIT MID-1",
+  "key": "Date",
+  "regex": "string",
+  "__v": 0
+  },
+  {
+  "coordinates": {
+  "x": 0.7418197420884937,
+  "y": 0.17854777669411628,
+  "w": 0.10680378856746832,
+  "h": 0.027236093699313364
+  },
+  "_id": "62b33d035d13528bd83debe5",
+  "templateName": "VIT MID-1",
+  "key": "Branch",
+  "regex": "string",
+  "__v": 0
+
+  },
+  {
+  "coordinates": {
+  "x": 0.19369496288387456,
+  "y": 0.22242816014273356,
+  "w": 0.22569844470046083,
+  "h": 0.05901157154756434
+  },
+  "_id": "62b33db45d13528bd83debe8",
+  "templateName": "VIT MID-1",
+  "key": "Name",
+  "regex": "string",
+  "__v": 0
+  }
+  ]
+
+
+  const data2 = [
+    {
+    "coordinates": {
+    "x": 0.5241723175785967,
+    "y": 0.3267002171257517,
+    "w": 0.3827285029461994,
+    "h": 0.09313820645571574
     },
-    part_1: {
-        flex:0.4,
-        justifyContent:'center',
-        //backgroundColor:'green'
-        
-
+    "_id": "62b694434b31ad105b9656a9",
+    "templateName": "aaaaa",
+    "key": "sign",
+    "regex": "string",
+    "__v": 0
     },
-    part_2: {
-        flex:0.6,
-       // backgroundColor:'yellow'
-        
-       
-
+    {
+    "coordinates": {
+    "x": 0.10115660331099506,
+    "y": 0.3238344225277196,
+    "w": 0.2961110193372349,
+    "h": 0.09600400105374786
+    },
+    "_id": "62b6945b4b31ad105b9656b1",
+    "templateName": "aaaaa",
+    "key": "additionals",
+    "regex": "string",
+    "__v": 0
+    },
+    {
+    "coordinates": {
+    "x": 0.5261866988767172,
+    "y": 0.22496462687593966,
+    "w": 0.38071412164807894,
+    "h": 0.02865791976247047
+    },
+    "_id": "62b6945b4b31ad105b9656b3",
+    "templateName": "aaaaa",
+    "key": "reg No",
+    "regex": "string",
+    "__v": 0
     }
-});
+    
+    ]

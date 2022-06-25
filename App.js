@@ -12,7 +12,7 @@ import Nearer from './srcs/screens/preview';
 import Edgs from './srcs/screens/xl';
 import {LogBox} from "react-native";
 import ImageDisplay from './srcs/ImageDisplay';
-import CollectImage from './srcs/CollectImage'
+import CollectImage from './srcs/CollectImage';
 LogBox.ignoreLogs([
 "exported from 'deprecated-react-native-prop-types'.",
 ])

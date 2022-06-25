@@ -40,7 +40,7 @@ const TextExample = ({ navigation }) => {
             <View style={styles.part_4}>
                <View style={styles.part_4_2}>
                   <TouchableOpacity style={styles.touch}
-                     onPress={() => navigation.navigate('ChooseTemplates')}>
+                     onPress={() => navigation.navigate('DefaultTemplates')}>
                      <Text style={styles.testt}> Sign In with Google</Text>
                   </TouchableOpacity>
                </View>
