@@ -1,7 +1,7 @@
 
 
 import React, { Component ,useState} from 'react'
-import { Text, View, StyleSheet, TouchableOpacity, Button ,Image} from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Button ,Image,Alert} from 'react-native';
 import ImageEditor from "@react-native-community/image-editor";
 
 import RNTextDetector from "rn-text-detector";
@@ -70,6 +70,18 @@ function  Action (navigation,img,object){
         })
         .catch((error) => {
             console.log(error,"**")
+            Alert.alert(
+              "Alert ",
+              "Got invalid data",
+              [
+                {
+                  text: "Cancel",
+                  onPress: () => console.log("Cancel Pressed"),
+                  style: "cancel"
+                },
+                { text: "OK", onPress: () => console.log("OK Pressed") }
+              ]
+            );
         })
 
         

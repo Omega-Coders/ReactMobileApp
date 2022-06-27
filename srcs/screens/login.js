@@ -19,11 +19,12 @@ const TextExample = ({ navigation }) => {
        
        <SafeAreaView style={[styles.container]}> 
 
-            <View style={styles.part_1}>
-               <View style={styles.part_1_1}>
-                  <Svgimg height={hp('75%')} width={wp('100%')} />
-               </View>
-            </View>
+       <View style={styles.part_0}>
+                            <View style={styles.part_0_1}>
+                                  <View style={styles.circle}>
+                                  </View>
+                             </View>
+                      </View>
             <View style={styles.part_2}>
                <Text style={styles.part_2_1}>
                   A New Method for
@@ -33,9 +34,10 @@ const TextExample = ({ navigation }) => {
                </Text>
 
             </View>
-            <View style={styles.part_3}>
-               <Svgimg1 style={styles.part_3_1}
-                  height={hp('35%')} width={wp('85%')}/>
+            <View style={styles.part_1}>
+               <View style={styles.part_1_1}>
+                  <Svgimg1 height={hp('75%')} width={wp('98%')} />
+               </View>
             </View>
             <View style={styles.part_4}>
                <View style={styles.part_4_2}>
@@ -53,9 +55,27 @@ const TextExample = ({ navigation }) => {
 export default TextExample
 
 const styles = StyleSheet.create({
+   part_0:{
+      flex:0.2,
+     // backgroundColor:"yellow"
+  },
+  part_0_1:{
+    flex:1,
+    //backgroundColor:"green"
+  },
+  circle:{
+     flex:0.9,
+     width: wp("64%"),
+     height: hp("30%"),
+     marginTop:hp("-20%"),
+     marginLeft:wp("-20%"),
+     borderRadius:  wp("150/2%"),
+     backgroundColor:'#6C63FF',
+  },
    part_1: {
-      flex: 0.35,
-    //  backgroundColor: "green"
+      flex: 0.45,
+      // backgroundColor: "green",
+       alignSelf:"center"
 
    },
      part_1_1:{
@@ -70,13 +90,13 @@ const styles = StyleSheet.create({
 
                part_2_1: {
                   flex: 0.5,
-                  
-                  fontFamily: 'Merriweather',
+                 // backgroundColor:"red",
+                  //fontFamily: 'Merriweather',
+                 // marginTop:hp("2%"),
                   fontSize: Text_Size.Text_size_Type_2,
-                 
                   marginLeft: wp('4%'),
-                  fontWeight: 'bold',
-                  color: '#104A6C'
+                  fontWeight: '700',
+                  color: 'black'
 
                },
                part_2_2: {
@@ -87,34 +107,13 @@ const styles = StyleSheet.create({
                  
                   marginLeft: wp('30%'),
                   fontWeight: 'bold',
-                  color: '#104A6C',
-                  textShadowColor: '#104A6C'
+                  color: 'black',
+                  textShadowColor: 'black'
                },
-     part_3: {
-      flex: 0.4,
-      alignItems: 'center',
-    // backgroundColor: "maroon"
-   },
-            part_3_1: {
-               flex: 0.9,
-               height: hp('30%'),
-               width: wp('50%'),
-               marginTop:hp("3%")
-
-            },
-            part_3_2: {
-               flex: 0.1,
-               alignItems: 'center',
-               fontWeight: 'bold',
-               fontSize: Text_Size.Text_size_Type_8,
-               color: 'black'
-
-   },
-
    part_4: {
-      flex: 0.15,
+      flex: 0.25,
       alignItems: 'center',
-    //  backgroundColor: "red"
+     // backgroundColor: "red",
 
    },
                part_4_1: {
@@ -161,16 +160,18 @@ const styles = StyleSheet.create({
            touch:{
                   width: wp('60%'),
                   height: hp('8%'), 
-                  justifyContent: "center", 
+                 justifyContent: "center", 
                   alignItems: "center", 
-                  borderRadius: wp('4%'), 
-                  backgroundColor: "#5364b2", 
-                  //marginTop: wp('60%')
+                  borderRadius: wp('5%'), 
+                  backgroundColor: "#6C63FF", 
+                  marginTop: hp('-1%')
                },
 
-            testt:{ color: "white", 
+            testt:{ 
+               fontFamily: 'sans-serif',
+               color: "white", 
                     fontWeight: "bold", 
-                    fontSize: Text_Size.Text_size_Type_0,
+                    fontSize: Text_Size.Text_size_Type_9,
          },
    container: {
       flex: 1,
@@ -178,10 +179,4 @@ const styles = StyleSheet.create({
       // marginTop: 100,
       // padding: 20
    },
-   
-   
-   
-  
-
-   
 });

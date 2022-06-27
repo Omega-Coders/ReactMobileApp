@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Button ,Image} from 'react-native';
+import React, { Component,useEffect,useState } from 'react';
+import { Text, View, StyleSheet, TouchableOpacity, Button ,Image,ActivityIndicator,LogBox} from 'react-native';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
 import CustomButton from './CustomButton';
 import ImageSize from 'react-native-image-size'
+LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
+LogBox.ignoreAllLogs();//Ignore all log notifications
 
 import RNGeniusScan from '@thegrizzlylabs/react-native-genius-scan';
 import ImagePicker from 'react-native-image-crop-picker';
@@ -12,11 +14,18 @@ import Action from './functions/Action';
 
 import RNTextDetector from "rn-text-detector";
 import Text_Size from './screens/Textscaling';
+import { useRoute } from '@react-navigation/native';
+
 
 
 const CollectImage = ({ navigation }) => {
+      
+  const route = useRoute();
+  const tempName = route.params.tempName; 
+  const abc = `https://radiant-anchorage-70390.herokuapp.com/cropper/get-by-template-name/${tempName}`;
+
     
-    const Scanner = async()=>{
+    const Scanner = ()=>{
         
         RNGeniusScan.setLicenceKey('533c5006515e03080951025739525a0e4a1051055a5742493d0702530f0b0900550355')
         .then(() => {
@@ -31,10 +40,13 @@ const CollectImage = ({ navigation }) => {
   
             const filepath =result['scans'][0]['enhancedUrl'];
            // console.log('**',typeof(filepath),'**');
-            Action(navigation,filepath,data1);
+            Action(navigation,filepath,data);
             
             
          
+        })
+        .catch((err)=>{
+          console.log(err);
         })
         
     
@@ -66,7 +78,7 @@ const CollectImage = ({ navigation }) => {
                
               // console.log(filepath)
                 
-                Action(navigation,filepath,data1)
+                Action(navigation,filepath,data)
 
                 
                
@@ -80,9 +92,65 @@ const CollectImage = ({ navigation }) => {
         }).catch(err=>{
           console.log('picker is stopped',err);
         })
+
+        
       
       }
-    return (
+      const [isLoading,setLoading] = useState(true)
+      const [data,setData] = useState(null)
+      const corData= {}
+
+      
+
+
+      useEffect(()=>{
+        fetch(`https://radiant-anchorage-70390.herokuapp.com/cropper/get-by-template-name/${tempName}`)
+        .then((res)=>res.json())
+        .then((jres)=>{
+          
+          setData(jres.det)
+          //console.log(data);
+          setLoading(false);
+         // console.log('1')
+          
+         
+         // console.log(jres.detail);
+          
+          //console.log(data)
+          
+        })
+        
+        .catch((err)=>{
+          console.log(err);
+          Alert.alert(
+            "Alert ",
+            "Please Check Your Internet Connection",
+            [
+              {
+                text: "Cancel",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+              },
+              { text: "OK", onPress: () => console.log("OK Pressed") }
+            ]
+          );
+        })
+      })
+    
+        if(isLoading){
+
+          return(
+            <View style={styles.load}>
+            <ActivityIndicator></ActivityIndicator>
+            <Text style={{color:'black'}}>Loading Keys</Text>
+            </View>
+          )
+        }
+      
+      else{
+        // corData= data.find(element => element['templateName']==tempName);
+        //console.log(found)
+        return (
       <View style={styles.container}>
            <View style={styles.part_0}>
                           <View style={styles.part_0_1}>
@@ -105,14 +173,29 @@ const CollectImage = ({ navigation }) => {
                            Gallery
                          </Text>
                       </TouchableOpacity>
+                      <Text style={styles.cus}>
+                          {tempName}
+                         </Text>
                    </View>
                 </View>
       </View>
   )
+        }
 }
 
 export default CollectImage
 const styles = StyleSheet.create({
+  load:{
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+    flexDirection:'row'
+
+  },
   container:{
      flex:1,
       flexDirection:'column',
@@ -189,7 +272,7 @@ const styles = StyleSheet.create({
          fontSize:Text_Size.Text_size_Type_1
         },
       });
-const data =[{
+const dataf =[{
   "coordinates": {
   "x": 0.516121332546533,
   "y": 0.28749219109030333,
