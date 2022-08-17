@@ -6,34 +6,33 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import {width_screen,height_screen} from './Dimensions/'
 import ImageEditor from "@react-native-community/image-editor";
 
-import RNGeniusScan from '@thegrizzlylabs/react-native-genius-scan';
 import RNTextDetector from "rn-text-detector";
  
  
 
 const Nearer = ({ navigation }) => {
-   const route = useRoute();
-   const [text ,setText] = useState('')
+   // const route = useRoute();
+   // const [text ,setText] = useState('')
 
 
    
-   const detect  = async()=>{
-      const visionResp = await RNTextDetector.detectFromUri(route.params.path);
-      console.log('visionResp', visionResp);
-      setText(JSON.stringify(visionResp))
+   // const detect  = async()=>{
+   //    const visionResp = await RNTextDetector.detectFromUri(route.params.path);
+   //    console.log('visionResp', visionResp);
+   //    setText(JSON.stringify(visionResp))
       
 
-   }
+   // }
 
   
     //cropping..
-    const cropData = {
+    //const cropData = {
       
-      offset: {x:0.120430*route.params.w , y: 0.265625*route.params.h},
-      size: {width: 0.121268*route.params.w, height: 0.033026*route.params.h},
-      displaySize: {width:0.121268*route.params.w , height: 0.033026*route.params.h},
+      // offset: {x:0.120430*route.params.w , y: 0.265625*route.params.h},
+      // size: {width: 0.121268*route.params.w, height: 0.033026*route.params.h},
+      // displaySize: {width:0.121268*route.params.w , height: 0.033026*route.params.h},
      // resizeMode: 'contain'  // | 'cover' | 'stretch',
-    };
+    //};
     const crop = ()=>{
       ImageEditor.cropImage(route.params.path, cropData).then(url => {
          console.log("Cropped image uri===", url);
@@ -55,7 +54,8 @@ const Nearer = ({ navigation }) => {
                         Getting Nearer
                         <TouchableOpacity
                            style={{ height: hp("7%"), width: wp("25%"), justifyContent: "center", alignItems: "center", borderRadius: 40, backgroundColor: "#5364b2", marginTop: hp('3%') }}
-                           onPress={detect}>
+                          // onPress={detect}
+                           >
                            <Text style={{ color: "white", fontWeight: "bold", fontSize: Text_Size.Text_size_Type_1 }}> Done</Text>
                         </ TouchableOpacity>
                      </Text>
@@ -67,13 +67,13 @@ const Nearer = ({ navigation }) => {
                   </View>
             </View>
             <View style={styles.p3}>
-            <Image source={{ uri: ('file://' + route.params.path) }} style={{ width: wp('90%'), height: hp('66%'), marginTop: '-15%' }}  resizeMode="contain" />
+            <Image source={{ uri: (' file:///data/user/0/com.scanapp/cache/ReactNative_cropped_image_49529487660960485.jpg') }} style={{ width: wp('90%'), height: hp('66%'), marginTop: '-15%' }}  resizeMode="contain" />
            
             <View style={styles.p3_1}>
                
            
             </View>
-            </View><Text style={{color:'black'}}>{text}</Text>
+            </View><Text style={{color:'black'}}>{'text'}</Text>
       </View>
 
    )

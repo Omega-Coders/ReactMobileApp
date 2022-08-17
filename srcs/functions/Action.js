@@ -6,6 +6,7 @@ import ImageEditor from "@react-native-community/image-editor";
 
 import RNTextDetector from "rn-text-detector";
 import ImageSize from 'react-native-image-size'
+import writeImg from './writeImg';
 
 
 
@@ -16,6 +17,7 @@ function  Action (navigation,img,object){
    //const [path,setPath]= useState('')
    const list ={}
    var length = object.length;
+   var temp =0;
    
   const crop = (data,img,width,height)=>{
     //croping data
@@ -41,8 +43,28 @@ function  Action (navigation,img,object){
 
     ImageEditor.cropImage(img, cropData,data).then(url => {
         
-       //console.log("Cropped image uri===", url);
-       detect(url,data);
+       console.log("Cropped image uri===", url);
+       data['crop_img']=url;
+       detect(url,data,width,height).catch((error) => {
+        console.log(error,"**")
+       
+        if(temp==0){
+          temp=1;
+          Alert.alert(
+            "Alert ",
+            "Got invalid data",
+            [
+              {
+                text: "Cancel",
+                onPress: () =>{console.log("cancel Pressed");navigation.navigate('CollectImage',{tempName:data["templateName"]})},
+                style: "cancel"
+              },
+              { text: "OK", onPress: () => {console.log("OK Pressed");navigation.navigate('CollectImage',{tempName:data["templateName"]})} }
+            ]
+          )
+        }
+        
+    })
       // navigation.navigate('ImageDisplay', { path:img,tdata:totalData});
      }).catch(err=>{
        console.log(err,'======')
@@ -86,7 +108,7 @@ function  Action (navigation,img,object){
 
         
 
-        const detect  = async(tex,data)=>{
+        const detect  = async(tex,data,width,height)=>{
           const visionResp = await RNTextDetector.detectFromUri(tex)
           if(visionResp.length==0){
             data['OCRResp']=' -';
@@ -104,9 +126,14 @@ function  Action (navigation,img,object){
           
           //console.log(data)
           if(length==0){
-            console.log(object)
-            console.log(list)
-            navigation.navigate('ImageDisplay', { path:img,tdata:object,xldata:list});
+           // console.log(object)
+            //console.log(list)
+            //writeImg(navigation,img,object,width,height)
+            console.log('tdata: ',object)
+            console.log('xldata: ',list)
+
+            
+            navigation.navigate('ImageDisplay', { path:img,tdata:object,xldata:list,imgW:width,imgH:height});
            }
 
           

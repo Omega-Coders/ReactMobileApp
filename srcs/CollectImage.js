@@ -1,5 +1,5 @@
 import React, { Component,useEffect,useState } from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, Button ,Image,ActivityIndicator,LogBox} from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, Button ,Image,ActivityIndicator,LogBox,Alert} from 'react-native';
 
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 
@@ -27,7 +27,7 @@ const CollectImage = ({ navigation }) => {
     
     const Scanner = ()=>{
         
-        RNGeniusScan.setLicenceKey('533c5006515e03080951025739525a0e4a1051055a5742493d0702530f0b0900550355')
+        RNGeniusScan.setLicenceKey('533c500652570809005d075539525a0e4a1051055a5742493d070250060008065a0351')
         .then(() => {
           return RNGeniusScan.scanWithConfiguration({  multiPage: false,defaultFilter: 'none' })
   
@@ -41,6 +41,8 @@ const CollectImage = ({ navigation }) => {
             const filepath =result['scans'][0]['enhancedUrl'];
            // console.log('**',typeof(filepath),'**');
             Action(navigation,filepath,data);
+            navigation.navigate('Loading',{text:'Almost Done...'});
+
             
             
          
@@ -63,7 +65,7 @@ const CollectImage = ({ navigation }) => {
           
 
 
-          RNGeniusScan.setLicenceKey('533c5006515e03080951025739525a0e4a1051055a5742493d0702530f0b0900550355')
+          RNGeniusScan.setLicenceKey('533c500652570809005d075539525a0e4a1051055a5742493d070250060008065a0351')
                 .then(() => {
                     return RNGeniusScan.scanWithConfiguration({ source: 'image', sourceImageUrl: image['path'],defaultFilter: 'none' })
                 })
@@ -79,6 +81,8 @@ const CollectImage = ({ navigation }) => {
               // console.log(filepath)
                 
                 Action(navigation,filepath,data)
+                
+                navigation.navigate('Loading',{text:'Almost Done...'});
 
                 
                

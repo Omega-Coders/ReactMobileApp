@@ -13,6 +13,9 @@ import Edgs from './srcs/screens/xl';
 import {LogBox} from "react-native";
 import ImageDisplay from './srcs/ImageDisplay';
 import CollectImage from './srcs/CollectImage';
+import ImgDis from './srcs/screens/test_src/imageDis'
+import Loading from './srcs/functions/loading'
+import EditPopup from './srcs/functions/popup'
 LogBox.ignoreLogs([
 "exported from 'deprecated-react-native-prop-types'.",
 ])
@@ -25,7 +28,10 @@ export default MyStack = () => {
    
   return (
     <NavigationContainer >
-      <Stack.Navigator screenOptions={{ headerShown: false }} >
+      <Stack.Navigator screenOptions={{ headerShown: false }}  >
+        
+      
+
         <Stack.Screen name="login" component={TextExample} />
         <Stack.Screen name="ChooseTemplates" component={Tempchoosen} />
         <Stack.Screen name="DefaultTemplates" component={Dte} />
@@ -36,6 +42,11 @@ export default MyStack = () => {
         <Stack.Screen name="Home" component={Home} options={{ title: 'Welcome' }}/>
        
         <Stack.Screen name="ImageDisplay" component={ImageDisplay} />
+        <Stack.Screen name="ImageDis" component={ImgDis} />
+        <Stack.Screen name="Loading" component={Loading} />
+        <Stack.Screen name="EditPopup" component={EditPopup} />
+
+
       </Stack.Navigator>
     </NavigationContainer>
   );

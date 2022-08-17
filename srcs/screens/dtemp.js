@@ -165,7 +165,7 @@ const Dte = ({ navigation }) => {
                     style={styles.proceed}
                     
                 >
-                    <Text style={{ color: "white", fontWeight: "bold", fontSize:Text_Size.Text_size_Type_0 }}>proceed</Text>
+                    <Text style={{ color: "white", fontWeight: "bold", fontSize:Text_Size.Text_size_Type_0 }}>proced</Text>
                 </ TouchableOpacity>
 
             </View>
